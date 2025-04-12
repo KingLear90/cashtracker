@@ -1,0 +1,30 @@
+{
+  "name": "cashtracker",
+  "version": "1.0.0",
+  "description": "Proyecto Cashtracker React Typescript Node.js",
+  "license": "ISC",
+  "author": "Alan Sánchez",
+  "type": "commonjs",
+  "main": "indexnpm.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "dev:api": "nodemon src/index.ts --api",
+    "build": "tsc",
+    "start": "node ./dist/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.14.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize-typescript": "^2.1.6"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/typescript": "^0.4.29",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2"
+  }
+}
