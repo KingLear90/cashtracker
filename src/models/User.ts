@@ -15,6 +15,7 @@ class User extends Model {
         type: DataType.STRING(60),
     })
     declare password: string;
-
     
 }
+
+export default User;    
