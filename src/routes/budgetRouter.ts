@@ -3,7 +3,7 @@ import { BudgetController } from '../controllers/BudgetControllers';
 import { handleInputErrors } from '../middleware/validation';
 import { validateBudgetExists, validateBudgetId, validateBudgetInput } from '../middleware/budget';
 import { ExpenseController } from '../controllers/ExpenseController';
-import { validateExpenseInput } from '../middleware/expense';
+import { validateExpenseId, validateExpenseInput } from '../middleware/expense';
 
 const router = Router();
 
@@ -11,6 +11,8 @@ const router = Router();
 // antes de llegar al controlador. Es decir, se valida el id antes de llegar al controlador.
 router.param('budgetId', validateBudgetId); 
 router.param('budgetId', validateBudgetExists); // Same: verifica si el presupuesto existe antes de llegar al controlador.
+
+router.param('expenseId', validateExpenseId)
 
 router.get('/', BudgetController.getAllBudgets);
 
