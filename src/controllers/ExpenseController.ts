@@ -17,7 +17,8 @@ export class ExpenseController {
     }
 
     static async getExpenseById(req: Request, res: Response) {
-        res.json(req.params.expense)
+        const expense = await  Expense.findByPk(req.expense.id);
+        res.json(expense)
     }
 
     static async updateExpense(req: Request, res: Response) {
