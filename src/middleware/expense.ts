@@ -11,10 +11,13 @@ declare global {
 }
 
 export const validateExpenseId = async (req: Request, res: Response, next: NextFunction) => {
+    const expenseId = await Expense.findByPk(req.params.expenseId);
     await param('expenseId')
             .isInt({ min: 1 }).withMessage('Invalid request. ID must be a positive integer.')
             .run(req);
 
+    req.expense = expenseId;
+    
     let errors = validationResult(req)
         if (!errors.isEmpty()) {
             res.status(400).json({ errors: errors.array() });
@@ -39,7 +42,6 @@ export const validateExpenseExists = async (req: Request, res: Response, next: N
 };
 
 export const validateExpenseInput = async (req: Request, res: Response, next: NextFunction) => {
-
     await body('name')
             .notEmpty()
             .withMessage('The expense name is required').run(req);
@@ -48,6 +50,12 @@ export const validateExpenseInput = async (req: Request, res: Response, next: Ne
             .withMessage('The amount is required')
             .isNumeric().withMessage('The amount must be a number')
             .custom(value => value > 0).withMessage('The amount must be greater than 0').run(req);
+
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(400).json({ errors: errors.array() });
+      return;
+    }
 
     next()
 }
