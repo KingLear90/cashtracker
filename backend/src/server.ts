@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import { db } from "./config/db";
 import budgetRouter from "./routes/budgetRouter";
+import authRouter from "./routes/authRouter";
 
 async function connectionDB() {
   try {
@@ -22,5 +23,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use("/api/budgets", budgetRouter);
+app.use("/api/auth", authRouter )
 
 export default app;
