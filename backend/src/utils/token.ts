@@ -1,1 +1,1 @@
-export const generateToken = () => Math.floor(Math.random() * 1000000).toString();
+export const generateToken = () => Math.floor(100000 + Math.random() * 100000).toString();
