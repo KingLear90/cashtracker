@@ -2,12 +2,10 @@ import { Request, Response } from "express";
 import User from "../models/User";
 import { hashPassword } from "../utils/auth";
 import { generateToken } from "../utils/token";
-import { AuthEmail } from "../emails/authEmail";
+import { AuthEmail } from "../emails/AuthEmail";
 
 export class AuthController {
   static createAccount = async (req: Request, res: Response) => { 
-    
-
     try {
       const { email, password } = req.body;
 
